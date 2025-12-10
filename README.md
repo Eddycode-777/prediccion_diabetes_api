@@ -69,8 +69,8 @@ Ejemplo de respuesta
 json
 Copiar código
 {
-  "prediction": 1,
-  "probability_of_diabetes": "82.4%"
+  "prediction": 0,
+  "probability_of_diabetes": "26.3%"
 }
 prediction = 1 → El modelo predice diabetes
 
