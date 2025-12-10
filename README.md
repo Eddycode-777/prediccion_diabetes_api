@@ -30,8 +30,11 @@ diabetes-api/
 │── requirements.txt
 │── README.md
 
-yaml
-Copiar código
+---
+
+## URL Pública de la API
+
+[https://prediccion-diabetes-api.onrender.com](https://prediccion-diabetes-api.onrender.com)
 
 ---
 
@@ -43,14 +46,14 @@ Recibe un JSON con los valores de las 8 características y devuelve la predicci�
 
 #### Características requeridas:
 
-- Pregnancies
-- Glucose
-- BloodPressure
-- SkinThickness
-- Insulin
-- BMI
-- DiabetesPedigreeFunction
-- Age
+- `Pregnancies` → Número de embarazos
+- `Glucose` → Glucosa en sangre
+- `BloodPressure` → Presión arterial
+- `SkinThickness` → Grosor de pliegue cutáneo
+- `Insulin` → Insulina sérica
+- `BMI` → Índice de masa corporal
+- `DiabetesPedigreeFunction` → Función de pedigrí de diabetes
+- `Age` → Edad
 
 #### Ejemplo de JSON de entrada
 
@@ -67,11 +70,36 @@ Recibe un JSON con los valores de las 8 características y devuelve la predicci�
 }
 Ejemplo de respuesta
 json
-Copiar código
+
 {
   "prediction": 0,
   "probability_of_diabetes": "26.3%"
 }
+
+
 prediction = 1 → El modelo predice diabetes
 
 prediction = 0 → El modelo NO predice diabetes
+
+Cómo probar la API
+Con Postman:
+
+Método: POST
+
+URL: https://prediccion-diabetes-api.onrender.com/predict
+
+Body: raw JSON (ejemplo arriba)
+
+Enviar y revisar la respuesta.
+
+Con cURL:
+
+
+curl -X POST https://prediccion-diabetes-api.onrender.com/predict \
+-H "Content-Type: application/json" \
+-d '{"Pregnancies":2,"Glucose":120,"BloodPressure":70,"SkinThickness":25,"Insulin":80,"BMI":28.5,"DiabetesPedigreeFunction":0.35,"Age":30}'
+
+Notas
+La API está desplegada en Render con una instancia gratuita; puede demorar unos segundos en despertar si no hay actividad reciente.
+
+El modelo fue entrenado usando scikit-learn 1.6.1 y debe usarse con las mismas versiones de librerías para evitar errores.
